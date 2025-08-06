@@ -1,0 +1,1 @@
+https://gwosc.org/api/v2/event-versions?include-default-parameters=true&format=csv
