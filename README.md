@@ -8,7 +8,7 @@ This tool allows you to instantly generate high-quality plots, including time-fr
 
 ## Visual Demonstration
 
-Quickly generate insightful plots for any event in the catalog, such as the following example analysis of GW150914:
+Generate Q-transform plot and theoretical plus and cross polarization strains for any event in the catalog, such as the following example analysis of GW150914:
 
 ## Key Features
 
