@@ -1,3 +1,4 @@
 # docs/requirements.txt
 sphinx
+sphinx_rtd_theme
 myst-parser
