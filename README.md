@@ -1,3 +1,5 @@
+[![A rectangular badge, half black half purple containing the text made at Code Astro](https://img.shields.io/badge/Made%20at-Code/Astro-blueviolet.svg)](https://semaphorep.github.io/codeastro/)
+
 # playgwtc: A Gravitational-Wave Event Plotter
 
 `playgwtc` is a user-friendly Python command-line tool for fetching, processing, and visualizing data for gravitational-wave events from the Gravitational Wave Open Science Center
