@@ -8,7 +8,7 @@ build-backend = "setuptools.build_meta"
 # Main project metadata section.
 [project]
 name = "playgwtc"
-version = "0.1.0" # Start with an initial version
+version = "0.1.0"
 authors = [
   { name="Devesh Giri", email="deveshgiri.edu@gmail.com" },
   { name="Danielle N Smart", email="danielle.naomi.smart@gmail.com" },
@@ -17,9 +17,11 @@ authors = [
 description = "A tool to fetch, process, and visualize data for Gravitational Wave events."
 readme = "README.md"
 requires-python = ">=3.9"
+
+license = { text = "MIT License" }
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
+    # The "License :: ..." classifier is removed from here
     "Operating System :: OS Independent",
     "Topic :: Scientific/Engineering :: Astronomy",
 ]
@@ -36,3 +38,7 @@ dependencies = [
 # to enable command-line interactions
 [project.scripts]
 playgwtc = "playgwtc.main:main"
+
+# This section explicitly tells setuptools where to find your package code.
+[tool.setuptools.packages.find]
+include = ["playgwtc"]  # Look for and include only the 'playgwtc' directory
