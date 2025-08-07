@@ -1,8 +1,8 @@
 .. playgwtc documentation master file
 
-===================================
+====================================
 Welcome to playgwtc's documentation!
-===================================
+====================================
 
 .. mdinclude:: ../../README.md
 
