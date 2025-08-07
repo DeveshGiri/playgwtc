@@ -15,7 +15,6 @@ sphinx:
 # telling readthedocs to install the project and its dependencies
 python:
   install:
-    - requirements: requirements.txt      # main package dependencies
-    - requirements: docs/requirements.txt # docs-specific dependencies
     - method: pip
       path: .                         # installing the playgwtc package
+    - requirements: docs/requirements.txt # docs-specific dependencies
