@@ -1,7 +1,7 @@
 # playgwtc/main.py
 
 import argparse
-from .data_handler import get_event_dictionary
+from .fetch_data import get_event_dictionary
 from .plotter import plot_q_transform, plot_waveform
 
 def main():
