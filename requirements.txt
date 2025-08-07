@@ -104,3 +104,4 @@ wcwidth @ file:///home/conda/feedstock_root/build_artifacts/wcwidth_173323132628
 widgetsnbextension==4.0.14
 zipp @ file:///home/conda/feedstock_root/build_artifacts/zipp_1749421620841/work
 zstandard==0.23.0
+requests
