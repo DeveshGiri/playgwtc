@@ -13,6 +13,10 @@ def plot_q_transform(event_name, gw_event_dict, detector='H1', timelength=32, pl
     Args:
         event_name (str): The name of the event to plot.
         gw_event_dict (dict): Dictionary of event parameters.
+        detector (str): The detector to use for the Q-transform.
+        timelength (int): Total time length for the data segment in seconds.
+        plot_left_time (float): Time before the event to include in the plot.
+        plot_right_time (float): Time after the event to include in the plot.
     """
     print(f"--- Generating Q-transform plot for {event_name} ---")
     try:
@@ -51,12 +55,15 @@ def plot_waveform(event_name, gw_event_dict, wf_model='IMRPhenomXPHM', flow=30, 
     Args:
         event_name (str): The name of the event to plot.
         gw_event_dict (dict): Dictionary of event parameters.
+        wf_model (str): The waveform model to use.
+        flow (int): The lower frequency limit for the waveform.
+        plot_left_time (float): Time before the event to include in the plot.
+        plot_right_time (float): Time after the event to include in the plot.
     """
     print(f"--- Generating theoretical waveform plot for {event_name} ---")
     try:
         event_params = gw_event_dict.get(event_name)
         if event_params is None:
-            # This check is redundant if called after plot_q_transform, but good practice
             print(f"Event '{event_name}' not found.")
             return
 
@@ -67,7 +74,7 @@ def plot_waveform(event_name, gw_event_dict, wf_model='IMRPhenomXPHM', flow=30, 
             print("Cannot generate waveform: Essential parameters are missing.")
             return
 
-        hp, hc = get_td_waveform(approximant="wf_model",
+        hp, hc = get_td_waveform(approximant=wf_model,
                                  mass1=m1, mass2=m2, spin1z=spin1z, spin2z=spin1z,
                                  distance=distance, delta_t=1.0/4096, f_lower=flow)
         
