@@ -10,7 +10,7 @@ build-backend = "setuptools.build_meta"
 name = "playgwtc"
 version = "0.1.0" # Start with an initial version
 authors = [
-  { name="Devesh Giri", email="deveshgiri.edu@gmail.com", "devesh.giri@students.iiserpune.ac.in" },
+  { name="Devesh Giri", email="deveshgiri.edu@gmail.com" },
   { name="Danielle N Smart", email="danielle.naomi.smart@gmail.com" },
   { name="Adiba Amira", email="asiddiqa@brynmawr.edu" },
 ]
