@@ -83,7 +83,7 @@ playgwtc --help
 
 * **Devesh Giri**
 * **Danielle N Smart**
-* **Adiba Amira**
+* **Adiba Amira Siddiqa**
 
 ## License
 
