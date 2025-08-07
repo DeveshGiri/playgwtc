@@ -15,6 +15,7 @@ project = 'playgwtc'
 copyright = '2025, Devesh Giri, Danielle N Smart, Adiba Amira Siddiqa'
 author = 'Devesh Giri, Danielle N Smart, Adiba Amira Siddiqa'
 release = '0.1.0'
+root_doc = 'index'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
