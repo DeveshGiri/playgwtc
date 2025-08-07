@@ -1,0 +1,38 @@
+# pyproject.toml
+
+# We will use the standard setuptools to build (as suggested by Sarah).
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+# Main project metadata section.
+[project]
+name = "playgwtc"
+version = "0.1.0" # Start with an initial version
+authors = [
+  { name="Devesh Giri", email="deveshgiri.edu@gmail.com, devesh.giri@students.iiserpune.ac.in" },
+  { name="Danielle N Smart", email="danielle.naomi.smart@gmail.com" },
+  { name="Adiba Amira", email="asiddiqa@brynmawr.edu" },
+]
+description = "A tool to fetch, process, and visualize data for Gravitational Wave events."
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Astronomy",
+]
+
+# Core dependencies. pip will automatically install these when the package is installed
+dependencies = [
+    "pandas",
+    "matplotlib",
+    "numpy",
+    "gwpy",
+    "pycbc",
+]
+
+# to enable command-line interactions
+[project.scripts]
+playgwtc = "playgwtc.main:main"
