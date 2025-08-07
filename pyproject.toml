@@ -33,6 +33,7 @@ dependencies = [
     "numpy",
     "gwpy",
     "pycbc",
+    "requests",
 ]
 
 # to enable command-line interactions
