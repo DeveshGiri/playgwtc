@@ -37,33 +37,29 @@ def _get_url_filepath():
             
     return file_path
 
-def get_event_dictionary(url_file=None):
+def get_event_dictionary(url_file='https://gwosc.org/api/v2/event-versions?include-default-parameters=true&format=csv'):
     """
     Fetches GW event data and returns it as a dictionary.
 
-    If url_file is not provided, it will automatically find or download
-    the necessary url.txt file.
-
     Args:
-        url_file (str, optional): A specific path to the file containing the data URL.
-                                  Defaults to None, which triggers automatic handling.
+        url_file (str, optional): A specific URL link to CSV in GWOSC.
+                                  Defaults to https://gwosc.org/api/v2/event-versions?include-default-parameters=true&format=csv, which triggers automatic handling.
 
     Returns:
         dict: A dictionary of GW events. Returns None if an error occurs.
     """
-    print("Fetching and processing data...")
-    if url_file is None:
-        try:
-            url_file = _get_url_filepath()
-        except FileNotFoundError:
-            print("\nError: The URL file could not be found or downloaded.")
-            return None
-        if url_file is None: # Handle download failure
-            print("\nNo URL file provided and automatic retrieval failed.")
-            return None
+    # print("Fetching and processing data...")
+    # if url_file is None:
+    #     try:
+    #         url_file = _get_url_filepath()
+    #     except FileNotFoundError:
+    #         print("\nError: The URL file could not be found or downloaded.")
+    #         return None
+    #     if url_file is None: # Handle download failure
+    #         print("\nNo URL file provided and automatic retrieval failed.")
+    #         return None
     try:
-        with open(url_file, 'r') as file:
-            url = file.read().strip()
+        url = url_file
         
         gw_events_df = pd.read_csv(url)
         print("Data downloaded successfully.")
@@ -89,7 +85,7 @@ def get_event_dictionary(url_file=None):
         return gw_event_dict
 
     except FileNotFoundError:
-        print(f"Error: The URL file was not found at '{url_file}'")
+        print(f"Error: The CSV file was not found at '{url_file}'")
         return None
     except Exception as e:
         print(f"An error occurred: {e}")

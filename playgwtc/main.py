@@ -21,7 +21,7 @@ def main():
     
     # --- Data Handling Argument ---
     parser.add_argument(
-        "--url_file", type=str, default="notebook_tests/url.txt",
+        "--url_file", type=str, default="https://gwosc.org/api/v2/event-versions?include-default-parameters=true&format=csv",
         help="Path to the file containing the data URL."
     )
 
