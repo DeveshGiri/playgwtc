@@ -4,39 +4,6 @@ import pandas as pd
 import requests
 from pathlib import Path
 
-def _get_url_filepath():
-    """
-    Ensures url.txt exists in a user-specific directory, downloading if needed.
-
-    Checks for ~/.playgwtc/url.txt. If it doesn't exist, it creates the
-    directory and downloads the file from the project's GitHub repository.
-
-    Returns:
-        pathlib.Path: The path to the url.txt file.
-    """
-    # Define a user-specific directory for your application's data
-    data_dir = Path.home() / ".playgwtc"
-    file_path = data_dir / "url.txt"
-    
-    # Create the directory if it doesn't exist
-    data_dir.mkdir(exist_ok=True)
-    
-    if not file_path.is_file():
-        print(f"url.txt not found. Downloading to {file_path}...")
-        # This is the URL to the *raw* file content
-        raw_url = "https://raw.githubusercontent.com/DeveshGiri/playgwtc/main/notebook_tests/url.txt"
-        try:
-            response = requests.get(raw_url)
-            response.raise_for_status()  # Will raise an exception for bad status codes
-            with open(file_path, 'w') as f:
-                f.write(response.text)
-            print("Download complete.")
-        except requests.exceptions.RequestException as e:
-            print(f"Error downloading URL file: {e}")
-            return None
-            
-    return file_path
-
 def get_event_dictionary(url_file='https://gwosc.org/api/v2/event-versions?include-default-parameters=true&format=csv'):
     """
     Fetches GW event data and returns it as a dictionary.
