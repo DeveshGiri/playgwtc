@@ -6,6 +6,20 @@ import pandas as pd
 from gwpy.timeseries import TimeSeries
 from pycbc.waveform import get_td_waveform
 
+plt.rcParams.update({
+    "text.usetex": True,
+    "font.family": "serif",
+    "font.serif": ["Times New Roman"], # Use CMR or fall back to Times
+    # "font.serif": ["Computer Modern Roman", "Times New Roman"], # Use CMR or fall back to Times
+    "font.size": 14,
+    "axes.labelsize": 16,
+    "xtick.labelsize": 14,
+    "ytick.labelsize": 14,
+    "legend.fontsize": 14,
+    "axes.titlesize": 18,
+    "figure.dpi": 300, # High resolution for crisp output
+})
+
 def plot_q_transform(event_name, gw_event_dict, detector='H1', timelength=32, plot_left_time=0.35, plot_right_time=0.05):
     """
     Generates and displays a Q-transform plot for a given GW event.
