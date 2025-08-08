@@ -43,6 +43,7 @@ def plot_q_transform(event_name, gw_event_dict, detector='H1', timelength=32, pl
         cbar = ax.colorbar(cmap='gist_heat', label='Normalized energy')
         cbar.set_ticks(np.linspace(qscan.value.min(), qscan.value.max(), num=7).astype(int))
         ax.grid(False)
+        plt.tight_layout()
         plot.show()
 
     except Exception as e:
@@ -89,6 +90,7 @@ def plot_waveform(event_name, gw_event_dict, wf_model='IMRPhenomXPHM', flow=30, 
             line.set_linewidth(2)
         plt.grid()
         plt.xlim(event_gps_time - plot_left_time, event_gps_time + plot_right_time)
+        plt.tight_layout()
         plt.show()
 
     except Exception as e:
