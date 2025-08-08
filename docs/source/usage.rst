@@ -6,9 +6,13 @@ The ``playgwtc`` tool is run from the terminal to fetch and plot data for a spec
 Command-Line Arguments
 ----------------------
 
-.. option:: --event <EVENT_NAME>
+.. option:: -l, --list-events [PREFIX]
 
-   **Required.** The name of the GW event to plot (e.g., ``GW150914``).
+   List all available event names from the catalog. If an optional ``PREFIX`` is provided (e.g., ``GW19``), the list will be filtered to show only events that start with that prefix.
+
+.. option:: -e, --event <EVENT_NAME>
+
+   The name of the GW event to plot (e.g., ``GW150914``).
 
 .. option:: --url_file <PATH>
 

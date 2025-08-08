@@ -1,7 +1,10 @@
 # playgwtc/main.py
 
 import argparse
-from .fetch_data import get_event_dictionary
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning, module='pykerr.qnm')
+
+from .fetch_data import get_event_dictionary, list_available_events
 from .plotter import plot_q_transform, plot_waveform
 
 def main():
@@ -10,12 +13,22 @@ def main():
     from the command line.
     """
     parser = argparse.ArgumentParser(
-        description="Fetch and plot data for a specific Gravitational-Wave Transient Catalog (GWTC) event."
+        description="Fetch, list, and plot data for Gravitational-Wave Transient Catalog (GWTC) events."
     )
+
+    # --- Argument Group for Exclusive Actions ---
+    # The user can either list events or plot an event, but not both.
+    action_group = parser.add_mutually_exclusive_group(required=True)
     
-    # --- Required Argument ---
-    parser.add_argument(
-        "--event", type=str, required=True,
+    action_group.add_argument(
+        "-l", "--list-events",
+        nargs='?',           # Makes the argument optional (0 or 1 value)
+        const="ALL",         # Value if flag is present but no prefix is given
+        help="List all available events. Optionally, provide a prefix to filter the list (e.g., --list-events GW19)."
+    )
+    action_group.add_argument(
+        "-e", "--event",
+        type=str,
         help="The name of the GW event to plot (e.g., 'GW150914')."
     )
     
@@ -57,11 +70,23 @@ def main():
     
     args = parser.parse_args()
     
-    print(f"Attempting to plot event: {args.event}")
+    if args.event!=None:
+        print(f"Attempting to plot event: {args.event}")
     
     gw_event_dict = get_event_dictionary(url_file=args.url_file)
+
+    if not gw_event_dict:
+        print("Exiting due to data loading error.")
+        return
+
+    # If --list-events was used, perform the listing action
+    if args.list_events is not None:
+        prefix = None if args.list_events == "ALL" else args.list_events
+        list_available_events(gw_event_dict, prefix=prefix)
     
-    if gw_event_dict:
+    # If --event was used, perform the plotting action
+    elif args.event:
+        print(f"Attempting to plot event: {args.event}")
         plot_q_transform(
             event_name=args.event, 
             gw_event_dict=gw_event_dict,
@@ -78,8 +103,6 @@ def main():
             plot_left_time=args.plot_left_time,
             plot_right_time=args.plot_right_time
         )
-    else:
-        print("Exiting due to data loading error.")
 
 if __name__ == "__main__":
     main()

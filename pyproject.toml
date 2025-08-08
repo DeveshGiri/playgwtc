@@ -8,7 +8,7 @@ build-backend = "setuptools.build_meta"
 # Main project metadata section.
 [project]
 name = "playgwtc"
-version = "0.1.2"
+version = "0.2.0"
 authors = [
   { name="Devesh Giri", email="deveshgiri.edu@gmail.com" },
   { name="Danielle N Smart", email="danielle.naomi.smart@gmail.com" },

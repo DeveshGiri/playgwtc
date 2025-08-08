@@ -29,7 +29,7 @@ def get_event_dictionary(url_file='https://gwosc.org/api/v2/event-versions?inclu
         url = url_file
         
         gw_events_df = pd.read_csv(url)
-        print("Data downloaded successfully.")
+        # print("Data downloaded successfully.")
 
         gw_event_dict = {}
         for _, row in gw_events_df.iterrows():
@@ -48,7 +48,7 @@ def get_event_dictionary(url_file='https://gwosc.org/api/v2/event-versions?inclu
             )
             gw_event_dict[event_name] = event_data
         
-        print(f"Successfully created a dictionary with {len(gw_event_dict)} events.")
+        print(f"Successfully loaded {len(gw_event_dict)} events.")
         return gw_event_dict
 
     except FileNotFoundError:
@@ -57,3 +57,36 @@ def get_event_dictionary(url_file='https://gwosc.org/api/v2/event-versions?inclu
     except Exception as e:
         print(f"An error occurred: {e}")
         return None
+
+def list_available_events(gw_event_dict, prefix=None):
+    """
+    Prints a sorted list of available GW event names, optionally
+    filtered by a prefix.
+
+    Args:
+        gw_event_dict (dict): The dictionary containing event parameters.
+        prefix (str, optional): The prefix to filter event names by.
+                                If None, all events are listed. Defaults to None.
+    """
+    if not gw_event_dict:
+        print("Could not retrieve event list.")
+        return
+
+    all_events = sorted(gw_event_dict.keys())
+    
+    if prefix:
+        # Filter the list based on the prefix
+        filtered_events = [name for name in all_events if name.startswith(prefix)]
+        print(f"\n--- Events starting with '{prefix}' ---")
+    else:
+        # Use the full list
+        filtered_events = all_events
+        print("\n--- Available Gravitational-Wave Events ---")
+
+    if not filtered_events:
+        print(f"No events found with the prefix '{prefix}'.")
+        return
+
+    for name in filtered_events:
+        print(name)
+    print(f"\nTotal events found: {len(filtered_events)}")
