@@ -11,13 +11,13 @@ plt.rcParams.update({
     "font.family": "serif",
     "font.serif": ["Times New Roman"], # Use CMR or fall back to Times
     # "font.serif": ["Computer Modern Roman", "Times New Roman"], # Use CMR or fall back to Times
-    "font.size": 14,
-    "axes.labelsize": 16,
-    "xtick.labelsize": 14,
-    "ytick.labelsize": 14,
-    "legend.fontsize": 14,
-    "axes.titlesize": 18,
-    "figure.dpi": 300, # High resolution for crisp output
+    "font.size": 8,
+    "axes.labelsize": 10,
+    "xtick.labelsize": 8,
+    "ytick.labelsize": 8,
+    "legend.fontsize": 8,
+    "axes.titlesize": 12,
+    "figure.dpi": 150, # High resolution for crisp output
 })
 
 def plot_q_transform(event_name, gw_event_dict, detector='H1', timelength=32, plot_left_time=0.35, plot_right_time=0.05):
@@ -47,7 +47,7 @@ def plot_q_transform(event_name, gw_event_dict, detector='H1', timelength=32, pl
         data = TimeSeries.fetch_open_data(detector, event_gps_time - (timelength/2), event_gps_time + (timelength/2), verbose=False, cache=True)
         qscan = data.q_transform(outseg=(event_gps_time - plot_left_time, event_gps_time + plot_right_time))
 
-        plot = qscan.plot(figsize=[12, 6])
+        plot = qscan.plot(figsize=[15, 6])
         ax = plot.gca()
         ax.set_xscale('seconds')
         ax.set_yscale('log')
@@ -57,7 +57,7 @@ def plot_q_transform(event_name, gw_event_dict, detector='H1', timelength=32, pl
         cbar = ax.colorbar(cmap='gist_heat', label='Normalized energy')
         cbar.set_ticks(np.linspace(qscan.value.min(), qscan.value.max(), num=7).astype(int))
         ax.grid(False)
-        plt.tight_layout()
+        # plt.tight_layout()
         plot.show()
 
     except Exception as e:
@@ -93,7 +93,7 @@ def plot_waveform(event_name, gw_event_dict, wf_model='IMRPhenomXPHM', flow=30, 
                                  mass1=m1, mass2=m2, spin1z=spin1z, spin2z=spin1z,
                                  distance=distance, delta_t=1.0/4096, f_lower=flow)
         
-        plt.figure(figsize=(12, 5))
+        plt.figure(figsize=(15, 5))
         plt.plot(hp.sample_times + event_gps_time, hp, color='black', linestyle='-', lw=2, label='Plus Polarization ($h_+$)')
         plt.plot(hc.sample_times + event_gps_time, hc, color='gray', linestyle='--', lw=2, label='Cross Polarization ($h_\\times$)')
         plt.xlabel('Time (s)')
@@ -104,7 +104,7 @@ def plot_waveform(event_name, gw_event_dict, wf_model='IMRPhenomXPHM', flow=30, 
             line.set_linewidth(2)
         plt.grid()
         plt.xlim(event_gps_time - plot_left_time, event_gps_time + plot_right_time)
-        plt.tight_layout()
+        # plt.tight_layout()
         plt.show()
 
     except Exception as e:
