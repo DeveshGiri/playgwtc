@@ -27,7 +27,7 @@ You can install `playgwtc` using either pip or directly from the source code.
 For the stable version, you can install the package directly using pip:
 
 ```bash
-pip install playgwtc==0.1.2
+pip install playgwtc
 ```
 ### From Source (for Developers)
 
